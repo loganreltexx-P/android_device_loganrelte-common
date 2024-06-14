@@ -37,21 +37,15 @@ PRODUCT_SHIPPING_API_LEVEL := 19
 DEVICE_FRAMEWORK_MANIFEST_FILE := system/libhidl/vintfdata/manifest_healthd_exclude.xml
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest.xml
 
-# Set default locale
-PRODUCT_LOCALES := en-GB
-
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=22 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.memcg=true user_debug=22 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_IMAGE_NAME := zImage
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 BOARD_KERNEL_PAGESIZE := 2048
 TARGET_KERNEL_SOURCE := kernel/samsung/msm8930-common
-ifneq ($(filter serranoltespr serranolteusc,$(TARGET_DEVICE)),)
-TARGET_KERNEL_CONFIG := samsung_serrano_usa_defconfig
-else
-TARGET_KERNEL_CONFIG := samsung_serrano_defconfig
-endif
+TARGET_KERNEL_CONFIG := samsung_loganre_defconfig
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
@@ -66,9 +60,9 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 10485760
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1572864000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1698693120
 BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 5649710080
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 5693733888
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_CACHEIMAGE_PARTITION_SIZE := 209715200
 BOARD_FLASH_BLOCK_SIZE := 131072
@@ -110,10 +104,6 @@ TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
 # Shims
 TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib/libperipheral_client.so|libshim_binder.so
-
-# Vendor init
-TARGET_INIT_VENDOR_LIB := libinit_serrano
-TARGET_RECOVERY_DEVICE_MODULES := libinit_serrano
 
 ifeq ($(WITH_TWRP),true)
 -include $(COMMON_PATH)/twrp.mk

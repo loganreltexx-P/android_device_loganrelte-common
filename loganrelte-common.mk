@@ -24,14 +24,13 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 960
-TARGET_SCREEN_WIDTH := 540
+TARGET_SCREEN_HEIGHT := 800
+TARGET_SCREEN_WIDTH := 480
 
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.sensor.proximity.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope.xml \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml
@@ -105,37 +104,33 @@ PRODUCT_PACKAGES += \
     gps.conf \
     sap.conf
 
-# IR package
-PRODUCT_PACKAGES += \
-    android.hardware.ir@1.0-service.samsung
-
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.serrano
+    android.hardware.light@2.0-service.loganrelte
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-service.serrano
+    android.hardware.vibrator@1.0-service.loganrelte
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service.serrano
+    android.hardware.usb@1.0-service.loganrelte
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service.serrano
+    android.hardware.power@1.1-service.loganrelte
 
 # Touch
 PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.serrano
+    vendor.lineage.touch@1.0-service.loganrelte
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service.serrano
+    vendor.lineage.livedisplay@2.0-service.loganrelte
 
 # Health HAL
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-service.serrano
+    android.hardware.health@2.0-service.loganrelte
 
 # F2FS
 PRODUCT_PACKAGES += \
@@ -164,9 +159,6 @@ PRODUCT_PACKAGES += \
 
 # call common serrano system props
 $(call inherit-product, $(COMMON_PATH)/system_prop.mk)
-
-# call common serrano system debug props
-#$(call inherit-product, $(COMMON_PATH)/system_prop_debug.mk)
 
 # call common msm8930
 $(call inherit-product, $(PLATFORM_PATH)/msm8930.mk)

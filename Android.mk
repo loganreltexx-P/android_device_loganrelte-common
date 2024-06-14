@@ -21,8 +21,7 @@
 
 ifeq ($(BOARD_VENDOR),samsung)
 ifeq ($(TARGET_BOARD_PLATFORM),msm8960)
-ifneq ($(filter serrano3gxx serranodsdd serranodsub serranoltebmc \
-                serranoltespr serranolteusc serranoltexx,$(TARGET_DEVICE)),)
+ifneq ($(filter loganrelte,loganreltexx,$(TARGET_DEVICE)),)
 include $(call all-subdir-makefiles,$(COMMON_PATH))
 endif
 endif
